@@ -11,7 +11,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v5
     - name: "Install uv with Python version ${{ inputs.python-version }}"
       uses: astral-sh/setup-uv@v6.8.0
       with:

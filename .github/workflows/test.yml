@@ -3,7 +3,6 @@ name: Unit Tests
 on:
   pull_request:
     branches: [ "master", "main" ]
-  fork:
   workflow_dispatch:
 
 jobs:
