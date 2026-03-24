@@ -1,0 +1,22 @@
+name: "Setup environment"
+description: "Sets up python and installs all dependencies."
+inputs:
+  python-version:
+    description: "Version of python"
+    required: true
+  install-dev-dependencies:
+    description: "If install dev dependencies"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v5
+    - name: "Install uv with Python version ${{ inputs.python-version }}"
+      uses: astral-sh/setup-uv@v6.8.0
+      with:
+        version: "latest"
+        python-version: ${{ inputs.python-version }}
+    - name: "Install Project Requirements"
+      run: uv sync ${{ ( inputs.install-dev-dependencies && '--extra dev') || '' }}
+      shell: bash
