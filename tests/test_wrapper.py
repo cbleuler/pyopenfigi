@@ -12,7 +12,7 @@ from pyopenfigi.models import (
 
 @pytest.fixture(scope="module")
 def vcr_config():
-    return {"filter_headers": ["authorization"], "record_mode": "none"}
+    return {"filter_headers": ["authorization"], "record_mode": "none", "decode_compressed_response": True}
 
 
 def test_headers():
